@@ -70,6 +70,8 @@ const Triangle = ({ points }) => {
       <button style={{color: "red"}} onClick={() => setIsAddingCircles(!isAddingCircles)}>
         {isAddingCircles ? 'Stop Autogenerating' : 'Start Autogenerating'}
       </button>
+      <br></br>
+      <br></br>
       <svg width="600" height="600">
         <polygon points={pointsStr} style={{ fill: 'goldenrod' }} />
         {circles.map((circle, i) => (
