@@ -53,7 +53,7 @@ const Triangle = ({ points }) => {
     if (isAddingCircles) {
       intervalId = setInterval(() => {
         setCircles(prevCircles => addCircle(prevCircles));
-      }, 1000 / 1000);
+      }, 1000 / 50000);
     }
 
     return () => {
@@ -63,19 +63,22 @@ const Triangle = ({ points }) => {
 
   return (
     <div>
-      <button onClick={addSingleCircle}>Add Circle</button>
-      <button onClick={() => addCircles(25)}>Add 25 Circles</button>
-      <button onClick={() => addCircles(200)}>Add 200 Circles</button>
-      <button onClick={() => addCircles(2000)}>Add 2000 Circles</button>
-      <button onClick={() => setIsAddingCircles(!isAddingCircles)}>
-        {isAddingCircles ? 'Stop Adding Circles' : 'Start Adding Circles'}
+      <button onClick={addSingleCircle}>Add Point</button>
+      <button onClick={() => addCircles(25)}>Add 25 Points</button>
+      <button onClick={() => addCircles(200)}>Add 200 Points</button>
+      <button onClick={() => addCircles(2000)}>Add 2000 Points</button>
+      <button style={{color: "red"}} onClick={() => setIsAddingCircles(!isAddingCircles)}>
+        {isAddingCircles ? 'Stop Autogenerating' : 'Start Autogenerating'}
       </button>
-      <svg width="900" height="900">
-        <polygon points={pointsStr} style={{ fill: 'silver' }} />
+      <svg width="600" height="600">
+        <polygon points={pointsStr} style={{ fill: 'goldenrod' }} />
         {circles.map((circle, i) => (
-          <circle key={i} cx={circle[0]} cy={circle[1]} r="1" fill="red" />
+          <circle key={i} cx={circle[0]} cy={circle[1]} r="2" fill="purple" />
         ))}
       </svg>
+      <p>Generate points inside the triangle. Each point is halfway between the last one and a random vertex.</p>
+      <p>Performance issues will start at 5 digit amount of points.</p>
+      <p>(2000 points might ruin the surprise if you've never seen this)</p>
     </div>
   );
 };
